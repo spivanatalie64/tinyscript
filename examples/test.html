@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head><title>Tinyscript Test</title></head>
+<body>
+<h1>Tinyscript Test Page</h1>
+<p>Open the console to see Tinyscript output.</p>
+
+<!-- Tinyscript inline test -->
+<script type="text/tinyscript">
+print("Hello from Tinyscript!")
+print("It works :3")
+
+let x = 42
+if x > 10 {
+  print("x is big:", x)
+}
+
+fun add(a, b) { return a + b }
+let result = add(5, 7)
+print("5 + 7 =", result)
+
+let arr = [1, 2, 3, 4, 5]
+print("Array:", arr)
+print("Length:", len(arr))
+
+let obj = { name: "tinyscript", version: "0.1" }
+print("Object name:", obj["name"])
+
+for i in 0..4 {
+  print("Count:", i)
+}
+
+print("All tests passed! uwu")
+</script>
+
+<noscript>
+  <p>Tinyscript is running! JavaScript is disabled.</p>
+</noscript>
+</body>
+</html>

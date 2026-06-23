@@ -1,0 +1,19 @@
+;;; gmakefile for Tinyscript
+;;; Build system for the libre JS alternative
+
+(default-target "all")
+
+;; target: name doc deps actions
+(target "all"         "Build everything"      '("check" "bundle")    '())
+(target "check"       "Run all tests"         '("hello")             '())
+(target "hello"       "Run hello.ts example"  '("build")
+        '("GUILE_AUTO_COMPILE=0 guile -L src -e main -s src/tinyscript.scm examples/hello.ts"))
+(target "build"       "Create build dir"      '()
+        '("mkdir -p build"))
+(target "bundle"      "Bundle FF extension"   '("build")
+        '("cd src/extension && zip -r ../../build/tinyscript-extension.zip ."))
+(target "install"     "Install to build/"     '("build")
+        '("cp src/tinyscript.scm build/tinyscript"
+          "chmod +x build/tinyscript"))
+(target "clean"       "Remove build artifacts" '()
+        '("rm -rf build"))

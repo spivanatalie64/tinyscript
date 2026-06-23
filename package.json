@@ -1,0 +1,17 @@
+{
+  "name": "tinyscript",
+  "version": "0.1.0",
+  "description": "Tinyscript — a libre JavaScript alternative for Firefox",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node tests/run.js",
+    "build": "node scripts/build.js",
+    "example": "node src/index.js examples/hello.ts"
+  },
+  "license": "MPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spivanatalie64/ajs-compiler"
+  }
+}

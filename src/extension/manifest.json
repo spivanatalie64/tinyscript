@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "name": "Tinyscript — Libre JavaScript Replacement",
+  "version": "0.1.0",
+  "description": "Replaces JavaScript with Tinyscript, a libre scripting language for the open web",
+  "author": "Tinyscript Project",
+  "homepage_url": "https://github.com/spivanatalie64/tinyscript",
+  "icons": {
+    "48": "icons/icon-48.svg",
+    "96": "icons/icon-96.svg"
+  },
+  "permissions": [
+    "<all_urls>",
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "tabs"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "run_at": "document_start",
+      "js": ["runtime/tinyscript.js", "content.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "web_accessible_resources": [
+    "runtime/*"
+  ],
+  "applications": {
+    "gecko": {
+      "id": "tinyscript@acreetionos.org",
+      "strict_min_version": "91.0"
+    }
+  }
+}
