@@ -27,19 +27,20 @@ function processScript(script) {
 
   const type = script.type || 'text/javascript';
 
-  if (type === 'text/tinyscript' || gOverrideAllScripts) {
+  if (type === 'text/tinyscript') {
     if (script.src) {
-      // External script - fetch and run
       fetch(script.src)
         .then(r => r.text())
         .then(code => runTinyscript(code, script))
         .catch(e => console.error('[Tinyscript] Failed to fetch:', script.src, e));
     } else {
-      // Inline script
       runTinyscript(script.textContent, script);
     }
+    script.type = 'text/blocked-by-tinyscript';
+    return true;
+  }
 
-    // Prevent normal execution
+  if (gOverrideAllScripts) {
     script.type = 'text/blocked-by-tinyscript';
     return true;
   }
