@@ -151,7 +151,7 @@ class TinyParser {
   obj(p)              { return ['object', ...p]; }
   index(obj, key)     { return ['index', obj, key]; }
   member(obj, key)    { return ['member', obj, key]; }
-  call(fn, args)      { return ['call', fn, args]; }
+  callExpr(fn, args)  { return ['call', fn, args]; }
   importStmt(p)       { return ['import', p]; }
   exportStmt(v)       { return ['export', v]; }
 
@@ -354,7 +354,7 @@ class TinyParser {
         this.advance();
         const args = this.argList();
         this.expect('op', ')');
-        left = this.call(left, args);
+        left = this.callExpr(left, args);
       } else if (this.match('op', '[')) {
         this.advance();
         const idx = this.expression();
