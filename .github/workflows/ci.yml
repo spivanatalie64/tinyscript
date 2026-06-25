@@ -8,18 +8,6 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install Guile
-        run: sudo apt-get update && sudo apt-get install -y guile-3.0 guile-json
-      - name: Run tinyscript test suite
-        run: guile -L src -e main -s src/tinyscript.scm examples/hello.ts
-      - name: Run gmake tests
-        run: guile gmake.scm check
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - name: Run Node tests
-        run: npm test
+    uses: spivanatalie64/.github/.github/workflows/ci-guile.yml@main
+    with:
+      module-name: "tinyscript"
